@@ -47,8 +47,8 @@ I'm actively involved in building and growing these communities:
   <br/><br/>
   <b>🕐 Most Recently Worked In</b><br/>
   <!-- RECENT_REPO:START -->
-  <a href="https://github.com/demxn013/demxn013">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=demxn013&repo=demxn013&theme=dark" alt="Most recently worked in repo"/>
+  <a href="https://github.com/Yazanaki/KenzAI">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Yazanaki&repo=KenzAI&theme=dark" alt="Most recently worked in repo"/>
   </a>
   <!-- RECENT_REPO:END -->
 </div>
