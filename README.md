@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://raw.githubusercontent.com/demxn013/demxn13/main/banner.png" alt="Banner" width="100%"/>
+</div>
+
 # Hey, I'm DEMXN13 👋
 
 Owner of **ElementalMC** — a Four Elements Minecraft Server experience.
