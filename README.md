@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/demxn013/demxn13/main/Yazanaki/Images/YAZANAKI_banner.png" alt="Yazanaki Banner" width="100%"/>
+  <img src="./Yazanaki/Images/YAZANAKI_banner.png" alt="Yazanaki Banner" width="100%"/>
 </div>
 
 # Hey, I'm DEMXN13 👋
@@ -33,15 +33,24 @@ I'm actively involved in building and growing these communities:
   </a>
 </div>
 
-### 📚 My Repositories
+### 📚 Featured Repositories
+
+<!-- These cards auto-update via .github/workflows/update-cards.yml (public repos only). -->
 
 <div align="center">
-  <a href="https://github.com/demxn013/YZNKResourcePack">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=demxn013&repo=YZNKResourcePack&theme=dark" alt="YZNKResourcePack"/>
+  <b>🔥 Most Worked In</b><br/>
+  <!-- TOP_REPO:START -->
+  <a href="https://github.com/Yazanaki/KenzAI">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Yazanaki&repo=KenzAI&theme=dark" alt="Most worked in repo"/>
   </a>
-  <a href="https://github.com/demxn013/demxn13">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=demxn013&repo=demxn13&theme=dark" alt="demxn13"/>
+  <!-- TOP_REPO:END -->
+  <br/><br/>
+  <b>🕐 Most Recently Worked In</b><br/>
+  <!-- RECENT_REPO:START -->
+  <a href="https://github.com/Yazanaki/KenzAI">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Yazanaki&repo=KenzAI&theme=dark" alt="Most recently worked in repo"/>
   </a>
+  <!-- RECENT_REPO:END -->
 </div>
 
 ---

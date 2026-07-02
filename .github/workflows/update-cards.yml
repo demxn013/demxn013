@@ -1,0 +1,101 @@
+name: Update Repository Cards
+
+on:
+  schedule:
+    - cron: "0 * * * *" # hourly
+  workflow_dispatch: {} # manual trigger
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-cards.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine most-recent and most-worked-in public repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          user="demxn013"
+
+          # Pull public events (PushEvents only). Private repo activity never
+          # appears in this feed, so private repos stay private automatically.
+          events="$(curl -sS \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/users/${user}/events/public?per_page=100")"
+
+          pushes="$(echo "$events" | jq '[.[] | select(.type == "PushEvent")]')"
+
+          # Most recently worked-in public repo = newest PushEvent.
+          recent="$(echo "$pushes" | jq -r '.[0].repo.name // empty')"
+
+          # Most worked-in public repo = most commits across the event window.
+          top="$(echo "$pushes" | jq -r '
+            group_by(.repo.name)
+            | map({repo: .[0].repo.name, commits: (map(.payload.size // 0) | add)})
+            | max_by(.commits)
+            | .repo // empty')"
+
+          echo "RECENT_REPO=$recent" >> "$GITHUB_ENV"
+          echo "TOP_REPO=$top" >> "$GITHUB_ENV"
+          echo "Detected recent=$recent top=$top"
+
+      - name: Rewrite README card slots
+        run: |
+          python3 - <<'PY'
+          import os, re
+
+          recent = os.environ.get("RECENT_REPO", "").strip()
+          top = os.environ.get("TOP_REPO", "").strip()
+
+          def card(full_repo, alt):
+              # full_repo looks like "Owner/Name"
+              if "/" not in full_repo:
+                  return None
+              owner, name = full_repo.split("/", 1)
+              return (
+                  f'<a href="https://github.com/{owner}/{name}">\n'
+                  f'    <img src="https://github-readme-stats.vercel.app/api/pin/'
+                  f'?username={owner}&repo={name}&theme=dark" alt="{alt}"/>\n'
+                  f'  </a>'
+              )
+
+          with open("README.md", encoding="utf-8") as f:
+              readme = f.read()
+
+          def replace(readme, marker, full_repo, alt):
+              block = card(full_repo, alt)
+              if not block:
+                  return readme  # nothing detected; leave the existing card
+              pattern = re.compile(
+                  rf"(<!-- {marker}:START -->\s*).*?(\s*<!-- {marker}:END -->)",
+                  re.DOTALL,
+              )
+              return pattern.sub(rf"\g<1>{block}\g<2>", readme)
+
+          readme = replace(readme, "TOP_REPO", top, "Most worked in repo")
+          readme = replace(readme, "RECENT_REPO", recent, "Most recently worked in repo")
+
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write(readme)
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No card changes."
+          else
+            git commit -m "chore: auto-update repository cards"
+            git push
+          fi
