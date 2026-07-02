@@ -12,7 +12,7 @@ Owner of **ElementalMC** - a Four Elements Minecraft Server experience.
 
 I'm actively involved in building and growing the following communities:
 
-### Yazanaki
+### Yazanaki Empire
 - **Discord**: [discord.gg/yazanaki-1220847061797179524](https://discord.gg/yazanaki-1220847061797179524)
 - **Organization**: [@Yazanaki](https://github.com/Yazanaki)
 
