@@ -47,8 +47,8 @@ I'm actively involved in building and growing the following communities:
   <br/><br/>
   <b>🕐 Most Recently Worked In</b><br/>
   <!-- RECENT_REPO:START -->
-  <a href="https://github.com/Yazanaki/AFK-Client">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Yazanaki&repo=AFK-Client&theme=dark" alt="Most recently worked in repo"/>
+  <a href="https://github.com/Yazanaki/KenzAI">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Yazanaki&repo=KenzAI&theme=dark" alt="Most recently worked in repo"/>
   </a>
   <!-- RECENT_REPO:END -->
 </div>
