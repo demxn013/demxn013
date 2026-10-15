@@ -47,8 +47,8 @@ I'm actively involved in building and growing the following communities:
   <br/><br/>
   <b>🕐 Most Recently Worked In</b><br/>
   <!-- RECENT_REPO:START -->
-  <a href="https://github.com/ElementalMC/HuskClaims">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ElementalMC&repo=HuskClaims&theme=dark" alt="Most recently worked in repo"/>
+  <a href="https://github.com/ElementalMC/ProjectKorra">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ElementalMC&repo=ProjectKorra&theme=dark" alt="Most recently worked in repo"/>
   </a>
   <!-- RECENT_REPO:END -->
 </div>
